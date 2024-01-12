@@ -6,8 +6,9 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordType, setPasswordType] = useState("password");
   const [passwordIcon, setPasswordIcon] = useState(faEyeSlash);
@@ -23,44 +24,35 @@ export default function Login() {
     setPasswordIcon(faEyeSlash);
   };
   const navigate = useNavigate();
-  const login = async (e) => {
+  const register = async (e) => {
     e.preventDefault();
 
     try {
       const { data, status } = await axios.post(
-        "http://localhost:8000/api/akun/login",
+        "http://localhost:8000/api/akun/add/pengurus",
         {
           email: email,
           password: password,
+          username: username
         }
       );
       // Jika respon 200/ ok
       if (status === 200) {
         Swal.fire({
           icon: "success",
-          title: "Login Berhasil!!!",
+          title: "Register Berhasil!!!",
           showConfirmButton: false,
           timer: 1500,
         });
-        localStorage.setItem("userId", data.data.data.id);
-        localStorage.setItem("email", data.data.data.email);
-        localStorage.setItem("token" ,data.data.token)
-        if(data.data.data.role == "Pengurus"){
           setTimeout(() => {
-            navigate("/sistem_pondok/dashboard_admin");
+            navigate("/");
             window.location.reload();
           }, 1500);
-        } else {
-          setTimeout(() => {
-            navigate("/sistem_pondok/dashboard_santri");
-            window.location.reload();
-          }, 1500);
-        }
       }
     } catch (error) {
       Swal.fire({
         icon: "error",
-        title: "Username atau password tidak valid!",
+        title: "Email atau password tidak valid!",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -72,13 +64,13 @@ export default function Login() {
     <div>
     <section className=" h-screen flex flex-col justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0" >
       <div className="md:w-1/2 w-64 max-w-lg">
-        <img className="mx-auto" src={require('../assets/images/logo3.png')} alt="Logo" />
+      <img className="mx-auto" src={require('../assets/images/logo3.png')} alt="Logo" />
       </div>
       <div className="md:w-1/2 max-w-lg bg-white bg-opacity-80 p-8 rounded-lg shadow-md">
         <div className="text-center mb-8">
           <label className="text-2xl font-semibold text-lime-900">Sistem Aplikasi Pondok</label>
         </div>
-        <form onSubmit={login}>
+        <form onSubmit={register}>
           <div className="mb-6">
             <label htmlFor="email" className="p-2 pb-2 font-semibold">
               Email
@@ -90,6 +82,19 @@ export default function Login() {
               placeholder="Masukkan email"
               required
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="mb-6">
+            <label htmlFor="email" className="p-2 pb-2 font-semibold">
+              Username
+            </label>
+            <input
+              type="text"
+              id="email"
+              className="w-full rounded-lg border p-4 text-sm shadow-sm"
+              placeholder="Masukkan email"
+              required
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
 
@@ -110,7 +115,7 @@ export default function Login() {
                 onClick={togglePassword}
                 className="absolute inset-y-0 right-0 grid place-content-center px-4 cursor-pointer"
               >
-                <FontAwesomeIcon icon={passwordIcon} className="text-black" />
+                <FontAwesomeIcon icon={passwordType === 'password' ? faEye : faEyeSlash} className="text-black" />
               </span>
             </div>
           </div>
@@ -119,8 +124,8 @@ export default function Login() {
             <button
               type="submit"
               className="mt-4 bg-lime-700 hover:bg-lime-900 px-10 py-2 text-white uppercase rounded text-sm tracking-wider"
-              >
-              Masuk
+            >
+              Daftar
             </button>
           </div>
         </form>
