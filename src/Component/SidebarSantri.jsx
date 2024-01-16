@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBill } from "@fortawesome/free-solid-svg-icons";
@@ -13,14 +13,6 @@ const Sidebar = () => {
     navigate("/");
   };
 
-  const [date, setDate] = useState(new Date());
-
-  useEffect(() => {
-    const timer = setInterval(() => setDate(new Date()), 1000);
-    return function cleanup() {
-      clearInterval(timer);
-    };
-  }, []);
 
   return (
     <>
@@ -143,7 +135,7 @@ const Sidebar = () => {
             {showModal ? (
               <div className="ml-6">
                 <NavLink
-                  to="/daftar-guru"
+                  to="/sistem_pondok/tagihan_uang_makan"
                   className="flex items-center py-2 text-white px-4 transition duration-300 hover:bg-green-700 no-underline gap-2"
                   activeclassname="active"
                 >
@@ -214,18 +206,6 @@ const Sidebar = () => {
               </svg>
               <span className="font-semibold text-lg">Diskusi</span>
             </NavLink>
-            {showModal === true ? null : (
-              <>
-                <div className="mt-5 ml-[93px]">
-                  <span className="">{date.getDate()}</span>
-                  <span className="">/{date.getMonth() + 1}</span>
-                  <span className="">/{date.getFullYear()}</span>
-                </div>
-                <div className="text-xl ml-[70px]">
-                  {date.toLocaleTimeString()}
-                </div>
-              </>
-            )}
           </nav>
         </div>
 

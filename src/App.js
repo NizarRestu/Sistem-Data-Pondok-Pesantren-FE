@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./Auth/Login";
-import Register from "./Auth/Register";
-import DashboardAdmin from "./pengurus/DashboardAdmin";
-import DashboardSantri from "./santri/DashboardSantri";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import DashboardAdmin from "./pages/pengurus/DashboardAdmin";
+import DashboardSantri from "./pages/santri/DashboardSantri";
+import TagihanUangMakan from "./pages/santri/TagihanUangMakan";
 import PrivateRoute from "./component/PrivateRoute";
 
 function App() {
@@ -25,6 +26,14 @@ function App() {
             element={
               <PrivateRoute>
                 <DashboardSantri/>
+              </PrivateRoute>
+            }
+          />
+        <Route
+            path="/sistem_pondok/tagihan_uang_makan"
+            element={
+              <PrivateRoute>
+                <TagihanUangMakan/>
               </PrivateRoute>
             }
           />
