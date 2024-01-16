@@ -149,7 +149,7 @@ const Sidebar = () => {
                   <span className="font-semibold">Uang Makan</span>
                 </NavLink>
                 <NavLink
-                  to="/daftar-siswa"
+                  to="/sistem_pondok/tagihan_uang_kitab"
                   className="flex items-center py-2 text-white px-4 transition duration-300 hover:bg-green-700 no-underline gap-2"
                   activeclassname="active"
                 >
@@ -163,7 +163,7 @@ const Sidebar = () => {
                   <span className="font-semibold">Uang Kitab</span>
                 </NavLink>
                 <NavLink
-                  to="/daftar-karyawan"
+                  to="/sistem_pondok/tagihan_uang_jajan"
                   className="flex items-center py-2 text-white px-4 transition duration-300 hover:bg-green-700 no-underline gap-2"
                   activeclassname="active"
                 >
@@ -177,7 +177,7 @@ const Sidebar = () => {
                   <span className="font-semibold">Uang Jajan</span>
                 </NavLink>
                 <NavLink
-                  to="/daftar-karyawan"
+                  to="/sistem_pondok/tagihan_uang_lainnya"
                   className="flex items-center py-2 text-white px-4 transition duration-300 hover:bg-green-700 no-underline gap-2"
                   activeclassname="active"
                 >

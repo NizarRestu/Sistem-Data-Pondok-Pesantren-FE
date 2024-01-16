@@ -4,6 +4,11 @@ import Register from "./pages/auth/Register";
 import DashboardAdmin from "./pages/pengurus/DashboardAdmin";
 import DashboardSantri from "./pages/santri/DashboardSantri";
 import TagihanUangMakan from "./pages/santri/TagihanUangMakan";
+import Transaksi from "./pages/santri/Transaksi";
+import TagihanUangJajan from "./pages/santri/TagihanUangJajan";
+import TagihanUangKitab from "./pages/santri/TagihanUangKitab";
+import TagihanUangLainnya from "./pages/santri/TagihanUangLainnya";
+
 import PrivateRoute from "./component/PrivateRoute";
 
 function App() {
@@ -34,6 +39,38 @@ function App() {
             element={
               <PrivateRoute>
                 <TagihanUangMakan/>
+              </PrivateRoute>
+            }
+          />
+        <Route
+            path="/sistem_pondok/tagihan_uang_kitab"
+            element={
+              <PrivateRoute>
+                <TagihanUangKitab/>
+              </PrivateRoute>
+            }
+          />
+        <Route
+            path="/sistem_pondok/tagihan_uang_jajan"
+            element={
+              <PrivateRoute>
+                <TagihanUangJajan/>
+              </PrivateRoute>
+            }
+          />
+        <Route
+            path="/sistem_pondok/tagihan_uang_lainnya"
+            element={
+              <PrivateRoute>
+                <TagihanUangLainnya/>
+              </PrivateRoute>
+            }
+          />
+        <Route
+            path="/sistem_pondok/transaksi/:id"
+            element={
+              <PrivateRoute>
+                <Transaksi/>
               </PrivateRoute>
             }
           />

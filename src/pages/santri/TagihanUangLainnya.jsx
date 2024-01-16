@@ -5,7 +5,7 @@ import "datatables.net";
 import axios from "axios";
 import "./../../assets/styles/datatables.css";
 
-const TagihanUangMakan = () => {
+const TagihanUangLainnya = () => {
   const tableRef = useRef(null);
   const [totalTagihan, setTotalTagihan] = useState([]);
 
@@ -18,13 +18,13 @@ const TagihanUangMakan = () => {
       // DataTable options
     });
   };
-  const queryMakan = "Uang Makan";
+  const queryLainnya = "LaiNnya";
   const getAll = async () => {
     try {
       const response = await axios.get(
         `http://localhost:8000/api/tagihan/santri/${localStorage.getItem(
           "userId"
-        )}/jenis_tagihan/${queryMakan}/status/Belum`,
+        )}/jenis_tagihan/${queryLainnya}/status/Belum`,
         {
           headers: { "auth-tgh": `jwt ${localStorage.getItem("token")}` },
         }
@@ -107,4 +107,4 @@ const TagihanUangMakan = () => {
   );
 };
 
-export default TagihanUangMakan;
+export default TagihanUangLainnya;
