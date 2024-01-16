@@ -57,7 +57,7 @@ const DashboardSantri = () => {
     };
 
     fetchData();
-  }, []);
+  });
 
   const [barChartData, setBarChartData] = useState({
     options: {
