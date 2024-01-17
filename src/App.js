@@ -8,6 +8,8 @@ import Transaksi from "./pages/santri/Transaksi";
 import TagihanUangJajan from "./pages/santri/TagihanUangJajan";
 import TagihanUangKitab from "./pages/santri/TagihanUangKitab";
 import TagihanUangLainnya from "./pages/santri/TagihanUangLainnya";
+import TransaksiAll from "./pages/santri/TransaksiAll";
+import RiwayatTagihan from "./pages/santri/RiwayatTagihan";
 
 import PrivateRoute from "./component/PrivateRoute";
 
@@ -71,6 +73,22 @@ function App() {
             element={
               <PrivateRoute>
                 <Transaksi/>
+              </PrivateRoute>
+            }
+          />
+        <Route
+            path="/sistem_pondok/transaksi"
+            element={
+              <PrivateRoute>
+                <TransaksiAll/>
+              </PrivateRoute>
+            }
+          />
+        <Route
+            path="/sistem_pondok/riwayat_tagihan"
+            element={
+              <PrivateRoute>
+                <RiwayatTagihan/>
               </PrivateRoute>
             }
           />
