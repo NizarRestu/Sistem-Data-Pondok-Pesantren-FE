@@ -44,6 +44,7 @@ export default function Login() {
         });
         localStorage.setItem("userId", data.data.data.id);
         localStorage.setItem("email", data.data.data.email);
+        localStorage.setItem("nama", data.data.data.nama);
         localStorage.setItem("token" ,data.data.token)
         if(data.data.data.role == "Pengurus"){
           setTimeout(() => {
@@ -60,7 +61,7 @@ export default function Login() {
     } catch (error) {
       Swal.fire({
         icon: "error",
-        title: "Username atau password tidak valid!",
+        title: "Email atau password tidak valid!",
         showConfirmButton: false,
         timer: 1500,
       });

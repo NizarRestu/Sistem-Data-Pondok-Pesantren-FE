@@ -83,7 +83,7 @@ const TagihanUangJajan = () => {
                       <td>{tagihan.created_date}</td>
                       <td>{tagihan.status}</td>
                       <td>
-                        <a href={"/sistem_pondok/transaksi_uang_makan/" + tagihan.id}>
+                        <a href={"/sistem_pondok/transaksi/" + tagihan.id}>
                         <button className="text-font-bold text-lime-500 py-1 md:text-2xl text-xl px-2 rounded">
                           <i className="fa-regular fa-money-bill-1"></i>
                         </button>

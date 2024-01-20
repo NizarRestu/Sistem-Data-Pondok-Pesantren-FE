@@ -4,6 +4,7 @@ import $ from "jquery";
 import "datatables.net";
 import axios from "axios";
 import "./../../assets/styles/datatables.css";
+import Swal from "sweetalert2";
 
 const RiwayatTagihan = () => {
   const tableRef = useRef(null);
@@ -31,6 +32,50 @@ const RiwayatTagihan = () => {
       console.log("get all", error);
     }
   };
+  const authToken = localStorage.getItem("token");
+  const deleteHistory = async (id) => {
+    Swal.fire({
+      title: "Apakah Anda Ingin Menghapus Data Ini?",
+      text: "Perubahan data tidak bisa dikembalikan!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Hapus",
+      cancelButtonText: "Batal",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          // Set id_santri to null before sending the request
+          await axios.put(
+            `http://localhost:8000/api/tagihan/delete/${id}`,
+            { id_santri: null },
+            {
+              headers: { "auth-tgh": `jwt ${authToken}` },
+            }
+          );
+          Swal.fire({
+            icon: "success",
+            title: "Dihapus!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
+        } catch (error) {
+          console.error(error);
+          Swal.fire({
+            icon: "error",
+            title: "Gagal Menghapus Data",
+            text: "Terjadi kesalahan saat menghapus data.",
+          });
+        }
+      }
+    });
+  };
+  
+
 
   useEffect(() => {
     getAll();
@@ -80,7 +125,7 @@ const RiwayatTagihan = () => {
                       <td>{tagihan.created_date}</td>
                       <td>{tagihan.status}</td>
                       <td>  
-                        <button className="text-font-bold text-red-500 py-1 md:text-2xl text-xl px-2 rounded">
+                        <button   onClick={() => deleteHistory(tagihan.id)} className="text-font-bold text-red-500 py-1 md:text-2xl text-xl px-2 rounded">
                         <i class="fa-solid fa-trash"></i>
                         </button>
                       </td>
