@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Sidebar from "../../component/SidebarAdmin";
+import SidebarAdmin from "../../component/SidebarAdmin";
 import $ from "jquery";
 import "datatables.net";
 import axios from "axios";
@@ -203,7 +203,7 @@ const DashboardAdmin = () => {
 
   return (
     <div className="relative min-h-screen md:flex" data-dev-hint="container">
-      <Sidebar />
+      <SidebarAdmin />
       <main id="content" className="max-h-screen overflow-y-auto flex-1 p-6 lg:px-8">
         <div className="container mx-auto">
           <div className="md:flex justify-around">

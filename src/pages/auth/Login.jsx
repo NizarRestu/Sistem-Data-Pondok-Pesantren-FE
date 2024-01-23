@@ -46,7 +46,7 @@ export default function Login() {
         localStorage.setItem("email", data.data.data.email);
         localStorage.setItem("nama", data.data.data.nama);
         localStorage.setItem("token" ,data.data.token)
-        if(data.data.data.role == "Pengurus"){
+        if(data.data.data.role === "Pengurus"){
           setTimeout(() => {
             navigate("/sistem_pondok/dashboard_admin");
             window.location.reload();

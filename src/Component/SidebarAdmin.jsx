@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBill , faFileInvoiceDollar , faClockRotateLeft } from "@fortawesome/free-solid-svg-icons";
 import "../assets/styles/sidebar.css";
 
-const Sidebar = () => {
+const SidebarAdmin = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
@@ -80,7 +80,7 @@ const Sidebar = () => {
           <hr />
           <nav data-dev-hint="main navigation">
             <NavLink
-              to="/sistem_pondok/dashboard_santri"
+              to="/sistem_pondok/dashboard_admin"
               className="flex items-center py-2 text-white px-4 transition duration-300 hover:bg-green-700 no-underline gap-2"
               activeclassname="active"
             >
@@ -94,82 +94,23 @@ const Sidebar = () => {
               <span className="font-semibold text-lg">Dashboard</span>
             </NavLink>
             <NavLink
-              to="/sistem_pondok/transaksi"
+              to="/sistem_pondok/pembayaran"
               className="flex items-center py-2 text-white px-4 transition duration-300 hover:bg-green-700 no-underline gap-2"
               activeclassname="active"
             >
               <FontAwesomeIcon className="w-6 h-6 icoonn text-white logo" icon={faMoneyBill} />
-              <span className="font-semibold text-lg">Transaksi</span>
+              <span className="font-semibold text-lg">Pembayaran</span>
             </NavLink>
-            {showModal === false ? (
-              <div
-                onClick={() => setShowModal(true)}
-                className="flex items-center py-2 text-white px-4 transition duration-300 hover:bg-green-700 no-underline gap-2"
-                activeclassname="active"
-              >
-                <svg
-                  className="w-6 h-6 icoon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 384 512"
-                >
-                  <path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
-                </svg>
-                <span className="font-semibold text-lg">Tagihan</span>
-              </div>
-            ) : (
-              <div
-                onClick={() => setShowModal(false)}
-                className="flex items-center py-2 text-white px-4 transition duration-300 hover:bg-green-700 no-underline gap-2"
-                activeclassname="active"
-              >
-                <svg
-                  className="w-6 h-6 icoon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 384 512"
-                >
-                  <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
-                </svg>
-                <span className="font-semibold text-lg">Tagihan</span>
-              </div>
-            )}
-            {showModal ? (
-              <div className="ml-6">
                 <NavLink
-                  to="/sistem_pondok/tagihan_uang_makan"
+                  to="/sistem_pondok/tagihan"
                   className="flex items-center py-2 text-white px-4 transition duration-300 hover:bg-green-700 no-underline gap-2"
                   activeclassname="active"
                 >
                   <FontAwesomeIcon className="w-6 h-6 icoonn text-white logo" icon={faFileInvoiceDollar} />
-                  <span className="font-semibold">Uang Makan</span>
+                  <span className="font-semibold">Tagihan</span>
                 </NavLink>
-                <NavLink
-                  to="/sistem_pondok/tagihan_uang_kitab"
-                  className="flex items-center py-2 text-white px-4 transition duration-300 hover:bg-green-700 no-underline gap-2"
-                  activeclassname="active"
-                >
-                  <FontAwesomeIcon className="w-6 h-6 icoonn text-white logo" icon={faFileInvoiceDollar} />
-                  <span className="font-semibold">Uang Kitab</span>
-                </NavLink>
-                <NavLink
-                  to="/sistem_pondok/tagihan_uang_jajan"
-                  className="flex items-center py-2 text-white px-4 transition duration-300 hover:bg-green-700 no-underline gap-2"
-                  activeclassname="active"
-                >
-                 <FontAwesomeIcon className="w-6 h-6 icoonn text-white logo" icon={faFileInvoiceDollar} />
-                  <span className="font-semibold">Uang Jajan</span>
-                </NavLink>
-                <NavLink
-                  to="/sistem_pondok/tagihan_uang_lainnya"
-                  className="flex items-center py-2 text-white px-4 transition duration-300 hover:bg-green-700 no-underline gap-2"
-                  activeclassname="active"
-                >
-                 <FontAwesomeIcon className="w-6 h-6 icoonn text-white logo" icon={faFileInvoiceDollar} />
-                  <span className="font-semibold">Lainnya</span>
-                </NavLink>
-              </div>
-            ) : null}
             <NavLink
-              to="/sistem_pondok/riwayat_tagihan"
+              to="/sistem_pondok/history_tagihan"
               className="flex items-center py-2 text-white px-4 transition duration-300 hover:bg-green-700 no-underline gap-2"
               activeclassname="active"
             >
@@ -206,4 +147,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default SidebarAdmin;
